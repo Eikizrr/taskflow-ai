@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 import "./features.css";
+import "./premium.css";
 import { api, download, saveSession, upload, type Session } from "./lib/api";
 import { useRealtime } from "./lib/realtime";
 
