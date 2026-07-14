@@ -14,7 +14,8 @@ import type { AuthUser } from '../auth/jwt.strategy';
 import { CreateProjectDto, UpdateProjectDto } from './projects.dto';
 import { ProjectsService } from './projects.service';
 import { Roles } from '../auth/roles.decorator';
-@UseGuards(AuthGuard('jwt'))
+import { RolesGuard } from '../auth/roles.guard';
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller('projects')
 export class ProjectsController {
   constructor(private projects: ProjectsService) {}

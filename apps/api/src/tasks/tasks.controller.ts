@@ -15,7 +15,8 @@ import type { AuthUser } from '../auth/jwt.strategy';
 import { CreateTaskDto, UpdateTaskDto } from './tasks.dto';
 import { TasksService } from './tasks.service';
 import { Roles } from '../auth/roles.decorator';
-@UseGuards(AuthGuard('jwt'))
+import { RolesGuard } from '../auth/roles.guard';
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller('tasks')
 export class TasksController {
   constructor(private tasks: TasksService) {}

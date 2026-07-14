@@ -10,9 +10,10 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import type { AuthUser } from '../auth/jwt.strategy';
 import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import { UpdateWorkspaceDto } from './workspace.dto';
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller('workspace')
 export class WorkspaceController {
   constructor(private prisma: PrismaService) {}

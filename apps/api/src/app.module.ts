@@ -11,7 +11,6 @@ import { RealtimeModule } from './realtime/realtime.module';
 import { CollaborationModule } from './collaboration/collaboration.module';
 import { TeamModule } from './team/team.module';
 import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from './auth/roles.guard';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { WorkspaceModule } from './workspace/workspace.module';
 import { SearchModule } from './search/search.module';
@@ -41,10 +40,6 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     StorageModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    { provide: APP_GUARD, useClass: ThrottlerGuard },
-    { provide: APP_GUARD, useClass: RolesGuard },
-  ],
+  providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}

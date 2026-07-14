@@ -12,9 +12,10 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import type { AuthUser } from '../auth/jwt.strategy';
 import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
 import { AddMemberDto, UpdateRoleDto } from './team.dto';
 import { TeamService } from './team.service';
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'), RolesGuard)
 @Controller('team')
 export class TeamController {
   constructor(private team: TeamService) {}
