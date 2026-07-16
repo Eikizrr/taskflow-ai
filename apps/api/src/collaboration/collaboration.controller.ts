@@ -53,6 +53,7 @@ export class CollaborationController {
         .addFileTypeValidator({
           fileType:
             /(pdf|png|jpe?g|gif|webp|plain|csv|zip|msword|officedocument|spreadsheet|presentation)/,
+          fallbackToMimetype: true,
         })
         .build(),
     )
